@@ -15,8 +15,8 @@ public class PenguinScript : MonoBehaviour
     float snakePower;
     [SerializeField]
     GameObject massGo;
-    Angle angleInstance;
-    
+    AngleScript angleInstance;
+    public bool AaPVisible;
     Transform penguinTransform;
     [SerializeField]
     Transform squareTransform;
@@ -26,6 +26,7 @@ public class PenguinScript : MonoBehaviour
     private bool Grounded;
     private bool ExittedGround;
     private bool rotSet;
+    private bool StartHitted;
     private void Awake()
     {
         penguinScript = this;
@@ -36,12 +37,10 @@ public class PenguinScript : MonoBehaviour
         rotSet = false;
         snakePower = 10f;
         penguinTransform = gameObject.transform;
-        angleInstance = Angle.angleInstance;
+        angleInstance = AngleScript.angleInstance;
         rb = gameObject.GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
-
         rb.isKinematic = true;
-
     }
     private void Update()
     {
@@ -60,7 +59,14 @@ public class PenguinScript : MonoBehaviour
         {
             Rotate();
         }
-
+        if (rb.velocity == new Vector2(0f, 0f))
+        {
+            if (StartHitted == true && AaPVisible != true)
+            {
+                AngleAndPower.angleAndPowerInstance.SetAngleAndPowerVisible();
+                AaPVisible = true;
+            }
+        }
 
     }
 
@@ -111,6 +117,11 @@ public class PenguinScript : MonoBehaviour
     }
     public void hitPenguin(float angle, float power)
     {
+        if(StartHitted != true)
+        {
+            StartHitted = true;
+        }
+        print($"{power}");
         rotSet = false;
         rb.isKinematic = false;
         Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
@@ -166,4 +177,5 @@ public class PenguinScript : MonoBehaviour
         else
             Grounded = true;
     }
+
 }

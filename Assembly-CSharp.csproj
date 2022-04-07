@@ -55,9 +55,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PenguinScript.cs" />
     <Compile Include="Assets\Scripts\CinemachineExtension\CinemachineLockY.cs" />
-    <Compile Include="Assets\Scripts\Angle.cs" />
     <Compile Include="Assets\Scripts\AngleAndPower.cs" />
+    <Compile Include="Assets\Scripts\Angle.cs" />
     <Compile Include="Assets\Scripts\Power.cs" />
+    <Compile Include="Assets\Scripts\AngleScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
