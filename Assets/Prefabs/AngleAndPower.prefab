@@ -118,6 +118,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5341653431445221538}
     m_Modifications:
+    - target: {fileID: 4125047289548532834, guid: ec7a38d09095228468575303e0768615, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4499423345261319878, guid: ec7a38d09095228468575303e0768615, type: 3}
       propertyPath: m_Name
       value: AnglePrefab

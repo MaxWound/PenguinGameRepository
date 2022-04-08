@@ -59,6 +59,8 @@
     <Compile Include="Assets\Scripts\Angle.cs" />
     <Compile Include="Assets\Scripts\Power.cs" />
     <Compile Include="Assets\Scripts\AngleScript.cs" />
+    <Compile Include="Assets\Scripts\GiraffeScript.cs" />
+    <Compile Include="Assets\Scripts\BirdScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

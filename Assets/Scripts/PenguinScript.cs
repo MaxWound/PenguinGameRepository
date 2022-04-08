@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PenguinScript : MonoBehaviour
 {
+    public bool inSimulation;
     public static PenguinScript penguinScript;
     [SerializeField, Range(1f, 3f)]
     float BumpForce;
     [SerializeField]
-    SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     [SerializeField]
     Transform floorTransform;
     [SerializeField]
@@ -20,16 +21,19 @@ public class PenguinScript : MonoBehaviour
     Transform penguinTransform;
     [SerializeField]
     Transform squareTransform;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     [SerializeField]
     GameObject PenguinSprite;
     private bool Grounded;
     private bool ExittedGround;
     private bool rotSet;
     private bool StartHitted;
+    public SpriteRenderer[] allSpriteRenderer;
     private void Awake()
     {
+        allSpriteRenderer = gameObject.GetComponentsInChildren<SpriteRenderer>();
         penguinScript = this;
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
     private void Start()
     {
@@ -38,7 +42,7 @@ public class PenguinScript : MonoBehaviour
         snakePower = 10f;
         penguinTransform = gameObject.transform;
         angleInstance = AngleScript.angleInstance;
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        
         rb.freezeRotation = true;
         rb.isKinematic = true;
     }
@@ -61,7 +65,7 @@ public class PenguinScript : MonoBehaviour
         }
         if (rb.velocity == new Vector2(0f, 0f))
         {
-            if (StartHitted == true && AaPVisible != true)
+            if (StartHitted == true && AaPVisible != true && inSimulation != true)
             {
                 AngleAndPower.angleAndPowerInstance.SetAngleAndPowerVisible();
                 AaPVisible = true;
@@ -92,6 +96,14 @@ public class PenguinScript : MonoBehaviour
         {
             hitSnake();
         }
+        if(other.tag == "Giraffe")
+        {
+            other.GetComponent<GiraffeScript>().SpawnAndThrow();
+        }
+        if(other.tag == "Bird")
+        {
+            other.GetComponent<BirdScript>().HoldAndThrow();
+        }
 
 
     }
@@ -113,6 +125,7 @@ public class PenguinScript : MonoBehaviour
     {
         rotSet = false;
         Grounded = false;
+        rb.velocity = new Vector2(rb.velocity.x, 0f);
         rb.AddForce(Vector2.up * snakePower, ForceMode2D.Impulse);
     }
     public void hitPenguin(float angle, float power)
@@ -176,6 +189,13 @@ public class PenguinScript : MonoBehaviour
         }
         else
             Grounded = true;
+    }
+    public void SetVisible(bool _bool)
+    {
+        for (int i = 0; i < allSpriteRenderer.Length; i++)
+        {
+            allSpriteRenderer[i].enabled = _bool;
+        }
     }
 
 }
