@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\AngleScript.cs" />
     <Compile Include="Assets\Scripts\GiraffeScript.cs" />
     <Compile Include="Assets\Scripts\BirdScript.cs" />
+    <Compile Include="Assets\Scripts\SnakeScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

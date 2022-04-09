@@ -12,8 +12,7 @@ public class PenguinScript : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     [SerializeField]
     Transform floorTransform;
-    [SerializeField]
-    float snakePower;
+    
     [SerializeField]
     GameObject massGo;
     AngleScript angleInstance;
@@ -24,9 +23,9 @@ public class PenguinScript : MonoBehaviour
     public Rigidbody2D rb;
     [SerializeField]
     GameObject PenguinSprite;
-    private bool Grounded;
+    public bool Grounded;
     private bool ExittedGround;
-    private bool rotSet;
+    public bool rotSet;
     private bool StartHitted;
     public SpriteRenderer[] allSpriteRenderer;
     private void Awake()
@@ -39,7 +38,7 @@ public class PenguinScript : MonoBehaviour
     {
 
         rotSet = false;
-        snakePower = 10f;
+        
         penguinTransform = gameObject.transform;
         angleInstance = AngleScript.angleInstance;
         
@@ -94,7 +93,7 @@ public class PenguinScript : MonoBehaviour
 
         if (other.tag == "Snake")
         {
-            hitSnake();
+            other.GetComponent<SnakeScript>().HitSnake();
         }
         if(other.tag == "Giraffe")
         {
@@ -121,13 +120,7 @@ public class PenguinScript : MonoBehaviour
         }
     }
 
-    private void hitSnake()
-    {
-        rotSet = false;
-        Grounded = false;
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
-        rb.AddForce(Vector2.up * snakePower, ForceMode2D.Impulse);
-    }
+    
     public void hitPenguin(float angle, float power)
     {
         if(StartHitted != true)

@@ -33,7 +33,9 @@ public class BirdScript : MonoBehaviour
     public IEnumerator IHoldAndThrow()
     {
         PenguinScript.penguinScript.inSimulation = true;
+        
         PenguinScript.penguinScript.transform.position = HolderTransform.position;
+        PenguinScript.penguinScript.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         PenguinScript.penguinScript.transform.parent = HolderTransform;
         pengRb.velocity = new Vector2(0f, 0f);
         pengRb.isKinematic = true;
