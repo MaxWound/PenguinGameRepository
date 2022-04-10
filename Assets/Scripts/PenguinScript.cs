@@ -64,7 +64,7 @@ public class PenguinScript : MonoBehaviour
         }
         if (rb.velocity == new Vector2(0f, 0f))
         {
-            if (StartHitted == true && AaPVisible != true && inSimulation != true)
+            if (StartHitted == true && AaPVisible != true && inSimulation != true && Grounded == true)
             {
                 AngleAndPower.angleAndPowerInstance.SetAngleAndPowerVisible();
                 AaPVisible = true;
