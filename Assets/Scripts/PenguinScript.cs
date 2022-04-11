@@ -12,7 +12,8 @@ public class PenguinScript : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     [SerializeField]
     Transform floorTransform;
-    
+    [SerializeField]
+    Object BirdObj;
     [SerializeField]
     GameObject massGo;
     AngleScript angleInstance;
@@ -88,6 +89,10 @@ public class PenguinScript : MonoBehaviour
                 {
                     Bump();
                 }
+            }
+            if(other.tag == "Sky")
+            {
+                Instantiate(BirdObj, penguinTransform.position, Quaternion.identity);
             }
         }
 

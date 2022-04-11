@@ -30,7 +30,7 @@ public class AngleScript : MonoBehaviour
         angleInstance = this;
         
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (ToRotate != false)
         {

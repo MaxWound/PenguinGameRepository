@@ -5,6 +5,13 @@ using UnityEngine;
 public class BirdScript : MonoBehaviour
 {
     [SerializeField]
+    float VerticalSpeed;
+    bool isLow;
+    bool toUp;
+    float posToMoveY;
+    [SerializeField]
+    Transform posToMoveTransform; 
+    [SerializeField]
     float throwAngle;
     [SerializeField]
     float throwPower;
@@ -18,17 +25,46 @@ public class BirdScript : MonoBehaviour
     Rigidbody2D pengRb;
     private void Start()
     {
+        toUp = false;
+        isLow = false;
         rb = gameObject.GetComponent<Rigidbody2D>();
         pengRb = PenguinScript.penguinScript.rb;
+        posToMoveY = posToMoveTransform.position.y;
+        HoldAndThrow();
         
     }
     private void Update()
     {
         rb.position += new Vector2(-1f, 0f) * Speed * Time.deltaTime;
+        if (isLow == false)
+        
+        {
+            if (rb.position.y >= posToMoveY)
+            {
+                print($"{posToMoveY} and  {rb.position.y}");
+                rb.position += new Vector2(0f, -1f) * VerticalSpeed * Time.deltaTime;
+            }
+            else
+            { 
+                isLow = true; 
+            
+            }
+        }
+        else if(isLow == true && toUp == true)
+        {
+            rb.position += new Vector2(0f, 1f) * VerticalSpeed * Time.deltaTime;
+        }
     }
     public void HoldAndThrow()
     {
         StartCoroutine(IHoldAndThrow());
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Sky" && toUp == true)
+        {
+            Destroy(gameObject);
+        }
     }
     public IEnumerator IHoldAndThrow()
     {
@@ -41,6 +77,7 @@ public class BirdScript : MonoBehaviour
         pengRb.isKinematic = true;
         yield return new WaitForSeconds(HoldTime);
         PenguinScript.penguinScript.transform.parent = null;
+        toUp = true;
         pengRb.isKinematic = false;
         PenguinScript.penguinScript.hitPenguin(throwAngle, throwPower);
         PenguinScript.penguinScript.inSimulation = false;

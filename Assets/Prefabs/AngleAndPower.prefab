@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8191821390484738575, guid: 31a5c2e092a7be149bbbc51b2ad8ae92, type: 3}
       propertyPath: PowerMultiplier
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31a5c2e092a7be149bbbc51b2ad8ae92, type: 3}
