@@ -46,7 +46,7 @@ public class PenguinScript : MonoBehaviour
         rb.freezeRotation = true;
         rb.isKinematic = true;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         
 
@@ -67,8 +67,15 @@ public class PenguinScript : MonoBehaviour
         {
             if (StartHitted == true && AaPVisible != true && inSimulation != true && Grounded == true)
             {
-                AngleAndPower.angleAndPowerInstance.SetAngleAndPowerVisible();
-                AaPVisible = true;
+                if (GameManager.gameManager.GameOver != true)
+                {
+                    AngleAndPower.angleAndPowerInstance.SetAngleAndPowerVisible();
+                    AaPVisible = true;
+                }
+                else
+                {
+                    GameManager.gameManager.ShowRestartWindow();
+                }
             }
         }
 
@@ -128,16 +135,19 @@ public class PenguinScript : MonoBehaviour
     
     public void hitPenguin(float angle, float power)
     {
-        if(StartHitted != true)
+        if (GameManager.gameManager.TriesCount != 0)
         {
-            StartHitted = true;
+            if (StartHitted != true)
+            {
+                StartHitted = true;
+            }
+            print($"{power}");
+            rotSet = false;
+            rb.isKinematic = false;
+            Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
+            rb.AddForce(dir * power, ForceMode2D.Impulse);
+            
         }
-        print($"{power}");
-        rotSet = false;
-        rb.isKinematic = false;
-        Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
-        rb.AddForce(dir * power, ForceMode2D.Impulse);
-
     }
     private void SetGrounded(bool _bool)
     {

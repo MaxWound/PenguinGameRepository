@@ -8,6 +8,8 @@ TagManager:
   - Snake
   - Giraffe
   - Bird
+  - Sky
+  - Try
   layers:
   - Default
   - TransparentFX

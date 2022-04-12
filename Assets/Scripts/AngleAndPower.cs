@@ -36,17 +36,22 @@ public class AngleAndPower : MonoBehaviour
         }
        
         else
-        if (AnglePicked == true && PowerPicked != true && Input.GetKeyDown(KeyCode.Mouse0) && isClickable == true)
+        if (AnglePicked == true && PowerPicked != true && Input.GetKeyDown(KeyCode.Mouse0) && isClickable == true && GameManager.gameManager.TriesCount != 0)
         {
             PowerValue = Power._powerInstance.StopPower();
             
             PenguinScript.penguinScript.hitPenguin(AngleValue, PowerValue);
+            GameManager.gameManager.MinusTry();
             AngleValue = 0;
             PowerValue = 0;
             PowerPicked = false;
             AnglePicked = false;
             SetAngleAndPowerNotVisible();
             
+        }
+        else if(GameManager.gameManager.TriesCount == 0)
+        {
+            print("GAME OVER");
         }
 
         if (Input.GetKeyDown(KeyCode.Tab)) 
