@@ -22,6 +22,7 @@ public class PenguinScript : MonoBehaviour
     [SerializeField]
     Transform squareTransform;
     public Rigidbody2D rb;
+    public float startXpos;
     [SerializeField]
     GameObject PenguinSprite;
     public bool Grounded;
@@ -37,7 +38,7 @@ public class PenguinScript : MonoBehaviour
     }
     private void Start()
     {
-
+        startXpos = gameObject.transform.position.x;
         rotSet = false;
         
         penguinTransform = gameObject.transform;
