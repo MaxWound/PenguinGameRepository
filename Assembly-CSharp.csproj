@@ -53,6 +53,7 @@
     <UnityVersion>2020.3.27f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PenguinScript.cs" />
     <Compile Include="Assets\Scripts\CinemachineExtension\CinemachineLockY.cs" />
     <Compile Include="Assets\Scripts\AngleAndPower.cs" />
@@ -62,7 +63,8 @@
     <Compile Include="Assets\Scripts\AngleScript.cs" />
     <Compile Include="Assets\Scripts\GiraffeScript.cs" />
     <Compile Include="Assets\Scripts\BirdScript.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\PlatformSpawner.cs" />
+    <Compile Include="Assets\Scripts\DeleterScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

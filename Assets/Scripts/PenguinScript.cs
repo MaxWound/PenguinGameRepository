@@ -49,7 +49,7 @@ public class PenguinScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
+        print($"Grounded = {Grounded}");
 
         if (penguinTransform.position.y - floorTransform.position.y >= 6f)
         {
@@ -121,7 +121,8 @@ public class PenguinScript : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-
+        if (other.tag == "Ground" && Grounded != true)
+        Grounded = true;
 
     }
     private void OnTriggerExit2D(Collider2D other)
