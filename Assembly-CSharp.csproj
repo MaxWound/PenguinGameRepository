@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\BirdScript.cs" />
     <Compile Include="Assets\Scripts\PlatformSpawner.cs" />
     <Compile Include="Assets\Scripts\DeleterScript.cs" />
+    <Compile Include="Assets\Scripts\Tier.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
