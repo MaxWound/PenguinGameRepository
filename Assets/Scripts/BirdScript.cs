@@ -80,7 +80,7 @@ public class BirdScript : MonoBehaviour
         PenguinScript.penguinScript.transform.parent = null;
         toUp = true;
         pengRb.isKinematic = false;
-        PenguinScript.penguinScript.hitPenguin(throwAngle, throwPower);
+        PenguinScript.penguinScript.hitPenguin(throwAngle, throwPower,false);
         PenguinScript.penguinScript.inSimulation = false;
 
     }

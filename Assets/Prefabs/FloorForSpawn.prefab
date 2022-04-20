@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eca4d3b6c419f649b260940e4ecfcd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObstacleSpawnChance: 0.803
+  ObstacleSpawnChance: 0.587
   SnakePrefab: {fileID: 8319140971287916616, guid: 60a7943f2e291fd4d8a193530b007d40, type: 3}
   GiraffePrefab: {fileID: 8464437677941110861, guid: 0e9722b06399e544e837ef27c0cddb2d, type: 3}
   ElephantPrefab: {fileID: 7530365755316622878, guid: b56a8c6a078baab49a498ac7591de3af, type: 3}

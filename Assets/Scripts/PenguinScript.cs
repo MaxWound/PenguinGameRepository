@@ -135,9 +135,25 @@ public class PenguinScript : MonoBehaviour
     }
 
     
-    public void hitPenguin(float angle, float power)
+    public void hitPenguin(float angle, float power, bool IsHitByYeti)
     {
-        if (GameManager.gameManager.TriesCount != 0)
+        if (IsHitByYeti == true)
+        {
+            if (GameManager.gameManager.TriesCount != 0)
+            {
+                if (StartHitted != true)
+                {
+                    StartHitted = true;
+                }
+                print($"{power}");
+                rotSet = false;
+                rb.isKinematic = false;
+                Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
+                rb.AddForce(dir * power, ForceMode2D.Impulse);
+
+            }
+        }
+        else
         {
             if (StartHitted != true)
             {
@@ -148,7 +164,6 @@ public class PenguinScript : MonoBehaviour
             rb.isKinematic = false;
             Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
             rb.AddForce(dir * power, ForceMode2D.Impulse);
-            
         }
     }
     private void SetGrounded(bool _bool)

@@ -33,7 +33,7 @@ public class GiraffeScript : MonoBehaviour
         yield return new WaitForSeconds(waitSec);
         PenguinScript.penguinScript.SetVisible(true);
         PenguinScript.penguinScript.rb.isKinematic = false;
-        PenguinScript.penguinScript.hitPenguin(throwAngle,throwPower);
+        PenguinScript.penguinScript.hitPenguin(throwAngle,throwPower,false);
         PenguinScript.penguinScript.inSimulation = false;
     }
 }

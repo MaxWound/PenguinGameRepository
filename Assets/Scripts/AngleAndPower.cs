@@ -40,7 +40,7 @@ public class AngleAndPower : MonoBehaviour
         {
             PowerValue = Power._powerInstance.StopPower();
             
-            PenguinScript.penguinScript.hitPenguin(AngleValue, PowerValue);
+            PenguinScript.penguinScript.hitPenguin(AngleValue, PowerValue, true);
             GameManager.gameManager.MinusTry();
             AngleValue = 0;
             PowerValue = 0;
