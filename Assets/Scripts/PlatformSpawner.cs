@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlatformSpawner : MonoBehaviour
 {
+    public static bool FirstSpawned;
     [SerializeField]
     GameObject SnakePrefab;
     [SerializeField]
@@ -38,6 +39,7 @@ public class PlatformSpawner : MonoBehaviour
     Tier[] Tiers;
     private void Start()
     {
+        FirstSpawned = false;
         Obstacles = new GameObject[] {SnakePrefab, GiraffePrefab, ElephantPrefab};
         nextSpawned = false;
         SpawnObstacles();
@@ -76,10 +78,11 @@ public class PlatformSpawner : MonoBehaviour
             Vector3 SecondRandPos = new Vector3(Random.Range(SecondFirstGroundPos.position.x, SecondSecondGroundPos.position.x), SecondFirstGroundPos.position.y, 0f);
             Instantiate(RandomObstacle(), SecondRandPos, Quaternion.identity);
         }
-        if (RandomBool() == true)
+        if (RandomBool() == true && FirstSpawned == true)
         {
             Vector3 ThirdRandPos = new Vector3(Random.Range(ThirdFirstGroundPos.position.x, ThirdSecondGroundPos.position.x), ThirdFirstGroundPos.position.y, 0f);
             Instantiate(RandomObstacle(), ThirdRandPos, Quaternion.identity);
+            FirstSpawned = true;
         }
     }
     GameObject RandomObstacle()
