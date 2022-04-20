@@ -117,10 +117,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Giraffe
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9206616596496042750, guid: d9067611ff3412045a9e7b631db4b523, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d9067611ff3412045a9e7b631db4b523, type: 3}
 --- !u!4 &7543849523893088547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 27939727336767136, guid: d9067611ff3412045a9e7b631db4b523, type: 3}
   m_PrefabInstance: {fileID: 7553205236909920131}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &6803695844475451792 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3943452837041698323, guid: d9067611ff3412045a9e7b631db4b523, type: 3}
+  m_PrefabInstance: {fileID: 7553205236909920131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9143611273951756819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1600680189422210448, guid: d9067611ff3412045a9e7b631db4b523, type: 3}
+  m_PrefabInstance: {fileID: 7553205236909920131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6422489736726405128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143611273951756819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d902d4b99016d4cb7ee3a9ce5c09d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwPower: 10
+  throwAngle: 90
+  waitSec: 1
+  spawner: {fileID: 6803695844475451792}
