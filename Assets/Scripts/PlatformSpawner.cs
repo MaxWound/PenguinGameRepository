@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlatformSpawner : MonoBehaviour
 {
+    [SerializeField][Range(0f,1f)]
+    float ObstacleSpawnChance;
     public static bool FirstSpawned;
     [SerializeField]
     GameObject SnakePrefab;
@@ -93,13 +95,13 @@ public class PlatformSpawner : MonoBehaviour
     bool RandomBool()
     {
         float RandValue = (Random.Range(0f, 1f));
-        if(RandValue < 0.5f)
+        if(RandValue <= ObstacleSpawnChance)
         {
-            return false;
+            return true;
         }
         else 
         {
-            return true;
+            return false;
         }
     }
 }
