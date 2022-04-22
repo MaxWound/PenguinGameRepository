@@ -31,6 +31,26 @@ public class PlatformSpawner : MonoBehaviour
     [SerializeField]
     private Transform ThirdSecondGroundPos;
 
+    [SerializeField]
+    private Transform FourthFirstGroundPos;
+    [SerializeField]
+    private Transform FourthSecondGroundPos;
+
+    [SerializeField]
+    private Transform FifthFirstGroundPos;
+    [SerializeField]
+    private Transform FifthSecondGroundPos;
+
+    [SerializeField]
+    private Transform SixthFirstGroundPos;
+    [SerializeField]
+    private Transform SixthSecondGroundPos;
+
+    [SerializeField]
+    private Transform SeventhFirstGroundPos;
+    [SerializeField]
+    private Transform SeventhSecondGroundPos;
+
     private bool nextSpawned;
     [SerializeField]
     GameObject testPrefab;
@@ -74,17 +94,42 @@ public class PlatformSpawner : MonoBehaviour
         {
             Vector3 FirstRandPos = new Vector3(Random.Range(FirstFirstGroundPos.position.x, FirstSecondGroundPos.position.x), FirstFirstGroundPos.position.y, 0f);
             Instantiate(RandomObstacle(), FirstRandPos, Quaternion.identity);
+            FirstSpawned = true;
         }
         if (RandomBool() == true)
         {
             Vector3 SecondRandPos = new Vector3(Random.Range(SecondFirstGroundPos.position.x, SecondSecondGroundPos.position.x), SecondFirstGroundPos.position.y, 0f);
             Instantiate(RandomObstacle(), SecondRandPos, Quaternion.identity);
+            FirstSpawned = true;
         }
-        if (RandomBool() == true && FirstSpawned == true)
+        if (RandomBool() == true)
         {
             Vector3 ThirdRandPos = new Vector3(Random.Range(ThirdFirstGroundPos.position.x, ThirdSecondGroundPos.position.x), ThirdFirstGroundPos.position.y, 0f);
             Instantiate(RandomObstacle(), ThirdRandPos, Quaternion.identity);
             FirstSpawned = true;
+        }
+        if (RandomBool() == true)
+        {
+            Vector3 FourthRandPos = new Vector3(Random.Range(FourthFirstGroundPos.position.x, FourthSecondGroundPos.position.x), ThirdFirstGroundPos.position.y, 0f);
+            Instantiate(RandomObstacle(), FourthRandPos, Quaternion.identity);
+            FirstSpawned = true;
+        }
+        if (RandomBool() == true)
+        {
+            Vector3 FifthRandPos = new Vector3(Random.Range(FifthFirstGroundPos.position.x, FifthSecondGroundPos.position.x), ThirdFirstGroundPos.position.y, 0f);
+            Instantiate(RandomObstacle(), FifthRandPos, Quaternion.identity);
+            FirstSpawned = true;
+        }
+        if (RandomBool() == true)
+        {
+            Vector3 SixthRandPos = new Vector3(Random.Range(SixthFirstGroundPos.position.x, SixthSecondGroundPos.position.x), ThirdFirstGroundPos.position.y, 0f);
+            Instantiate(RandomObstacle(), SixthRandPos, Quaternion.identity);
+        }
+        if (RandomBool() == true && FirstSpawned == true)
+        {
+            Vector3 SeventhRandPos = new Vector3(Random.Range(SeventhFirstGroundPos.position.x, SeventhSecondGroundPos.position.x), ThirdFirstGroundPos.position.y, 0f);
+            Instantiate(RandomObstacle(), SeventhRandPos, Quaternion.identity);
+            
         }
     }
     GameObject RandomObstacle()
