@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class AngleAndPower : MonoBehaviour
 {
-    
+    [SerializeField]
+    AudioSource ReadySound;
+    [SerializeField]
+    AudioSource WhistleSound;
+
     
     public static AngleAndPower angleAndPowerInstance;
     private void Awake()
@@ -22,6 +26,7 @@ public class AngleAndPower : MonoBehaviour
         isClickable = true;
         AngleValue = 0;
         PowerValue = 0;
+        SetAngleAndPowerVisible();
     }
     private void Update()
     {
@@ -74,7 +79,8 @@ public class AngleAndPower : MonoBehaviour
     }
     public void SetAngleAndPowerVisible()
     {
-        
+        //WhistleSound.Play();
+        ReadySound.Play();
         Power._powerInstance.SetVisible();
         AngleScript.angleInstance.SetVisible();
         isClickable = true;

@@ -148,10 +148,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VerticalSpeed: 3
   posToMoveTransform: {fileID: 7667020615534375346}
-  throwAngle: 70
+  throwAngle: 90
   throwPower: 5
   HolderTransform: {fileID: 8083377022660835432}
-  Speed: 1.97
+  Speed: 7
   HoldTime: 4.16
 --- !u!1 &7902314541789908110
 GameObject:

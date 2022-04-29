@@ -33,8 +33,9 @@ public class BirdScript : MonoBehaviour
         HoldAndThrow();
         
     }
-    private void Update()
+    private void FixedUpdate()
     {
+        
         rb.position += new Vector2(-1f, 0f) * Speed * Time.deltaTime;
         if (isLow == false)
         

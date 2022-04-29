@@ -24,15 +24,16 @@ public class Power : MonoBehaviour
     float moveVal;
     private void Awake()
     {
-        spriteRenderer = gameObject.GetComponentsInChildren<SpriteRenderer>();
-        HitPower = 0;
-        moveVal = -1;
-        _powerInstance = this;
+        
         
 
 }
     private void Start()
     {
+        spriteRenderer = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        HitPower = 0;
+        moveVal = -1;
+        _powerInstance = this;
         xPos = cursorTransform.transform.localPosition.x;
         HighPos = HighTransform.transform.localPosition.y;
         LowPos = LowTransform.transform.localPosition.y;

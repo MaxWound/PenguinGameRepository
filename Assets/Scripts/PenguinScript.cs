@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PenguinScript : MonoBehaviour
 {
+    
+    [SerializeField]
+    AudioSource HitByYetiSound;
+    [SerializeField]
+    AudioSource BirdSound;
+    [SerializeField]
+    AudioSource BumpSound;
     public bool inSimulation;
     public static PenguinScript penguinScript;
     [SerializeField, Range(1f, 3f)]
@@ -32,6 +39,7 @@ public class PenguinScript : MonoBehaviour
     public SpriteRenderer[] allSpriteRenderer;
     private void Awake()
     {
+       
         allSpriteRenderer = gameObject.GetComponentsInChildren<SpriteRenderer>();
         penguinScript = this;
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -66,7 +74,8 @@ public class PenguinScript : MonoBehaviour
         }
         if (rb.velocity == new Vector2(0f, 0f))
         {
-            if (StartHitted == true && AaPVisible != true && inSimulation != true && Grounded == true)
+            //Убрал Grounded
+            if (StartHitted == true && AaPVisible != true && inSimulation != true)
             {
                 if (GameManager.gameManager.GameOver != true)
                 {
@@ -91,6 +100,7 @@ public class PenguinScript : MonoBehaviour
 
             if (other.tag == "Ground")
             {
+               
                 Grounded = true;
                 SetAngle();
                 if (rb.velocity.y <= -5)
@@ -101,6 +111,7 @@ public class PenguinScript : MonoBehaviour
             if(other.tag == "Sky")
             {
                 Instantiate(BirdObj, penguinTransform.position, Quaternion.identity);
+                BirdSound.Play();
             }
         }
 
@@ -125,6 +136,7 @@ public class PenguinScript : MonoBehaviour
         Grounded = true;
 
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Ground")
@@ -133,18 +145,28 @@ public class PenguinScript : MonoBehaviour
             Grounded = false;
         }
     }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag != "Ground")
+        {
+            BumpSound.Play();
+        }
+    }
 
     
+
     public void hitPenguin(float angle, float power, bool IsHitByYeti)
     {
         if (IsHitByYeti == true)
         {
             if (GameManager.gameManager.TriesCount != 0)
             {
+                
                 if (StartHitted != true)
                 {
                     StartHitted = true;
                 }
+                HitByYetiSound.Play();
                 print($"{power}");
                 rotSet = false;
                 rb.isKinematic = false;
@@ -172,6 +194,7 @@ public class PenguinScript : MonoBehaviour
     }
     void Bump()
     {
+        
         rb.AddForce(Vector2.up * (rb.velocity.y * -1) * BumpForce, ForceMode2D.Impulse);
 
     }
@@ -187,6 +210,7 @@ public class PenguinScript : MonoBehaviour
                 rb.SetRotation(90f);
                 rotSet = true;
                 Grounded = true;
+                BumpSound.Play();
             }
 
             //penguinTransform.localEulerAngles = new Vector3(0f, 0f, -90f);
